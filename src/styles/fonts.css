@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+/* Remap Figma-generated font-family tokens to real web fonts */
+.font-\[\'Unbounded\:Bold\'\,sans-serif\] {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+}
+.font-\[\'Unbounded\:Regular\'\,sans-serif\] {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 400;
+}
+.font-\[\'Inter\:Regular\'\,sans-serif\] {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+.font-\[\'Inter\:Bold\'\,sans-serif\] {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
