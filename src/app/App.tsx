@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lockup from "@/imports/Lockup/index";
 import svgPaths from "@/imports/Prototype/svg-yhtj6dad64";
 import imgIPhone1617ProMax2 from "@/imports/iStock-2188925842.png";
@@ -170,8 +170,22 @@ function HotspotCircle({
   );
 }
 
+const DESIGN_WIDTH = 440;
+const DESIGN_HEIGHT = 956;
+
 export default function App() {
   const [selected, setSelected] = useState<Brand>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    function updateScale() {
+      // Never scale up on wide desktop screens — only shrink to fit narrower ones.
+      setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
+    }
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
   const handleCircle = (brand: NonNullable<Brand>) => {
     setSelected((prev) => (prev === brand ? null : brand));
@@ -181,7 +195,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center">
-      <div className="content-stretch flex flex-col h-[956px] items-center overflow-clip relative shrink-0 w-[440px]">
+      <div style={{ width: DESIGN_WIDTH * scale, height: DESIGN_HEIGHT * scale }} className="relative shrink-0">
+      <div
+        style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}
+        className="content-stretch flex flex-col h-[956px] items-center overflow-clip relative shrink-0 w-[440px]"
+      >
 
         {/* Background */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
@@ -285,6 +303,7 @@ export default function App() {
           </div>
         </div>
 
+      </div>
       </div>
     </div>
   );
