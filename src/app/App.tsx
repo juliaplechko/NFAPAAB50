@@ -197,7 +197,7 @@ export default function App() {
           </div>
 
           {/* Copy — sits below the pinned logo, swaps between question and feedback */}
-          <div className={`absolute left-0 right-0 px-[36px] ${fb ? "top-[124px]" : "top-[144px]"}`}>
+          <div className={`absolute left-0 right-0 px-[36px] ${fb ? "top-[110px]" : "top-[144px]"}`}>
             {!fb ? (
               <div className="[word-break:break-word] flex flex-col gap-[8px] items-start text-[#010101] text-center w-full">
                 <p className="font-['Unbounded:Bold',sans-serif] font-bold leading-none text-[20px] tracking-[-0.4px] uppercase w-full">
